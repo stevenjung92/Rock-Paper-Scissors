@@ -1,0 +1,78 @@
+<script>
+    function computerPlay() {
+        //Randomly return rock, paper, or scissors
+        let list = ['rock','paper','scissors'];
+        let random = list[Math.floor(Math.random() * list.length)];
+        return random;
+    }
+    function playGame(player, computer) {
+        //Get player input
+        player = player.toLowerCase();
+        let check = true;
+        while (check) {
+            if (player === "rock" || player === "paper" || player === "scissors") {
+                check = false;
+            }
+            else {
+                player = prompt("Must enter 'rock', 'paper', or 'scissors' ").toLowerCase();
+            }
+    }
+        
+        let message;
+        if (player === computer) {
+            return message = `You tied. You both played ${player}.`;
+
+        } else if (player === "rock" && computer === "scissors") {
+            return message = `You win! ${player} beats ${computer}.`;
+
+        } else if (player === "rock" && computer !== "scissors") {
+            return message = `You lose... ${computer} beats ${player}.`;
+
+        } else if (player === "scissors" && computer === "paper") {
+            return message = `You win! ${player} beats ${computer}.`;
+
+        } else if (player === "scissors" && computer !== "paper") {
+            return message = `You lose... ${computer} beats ${player}.`;
+
+        } else if (player === "paper" && computer === "rock") {
+            return message = `You win! ${player} beats ${computer}.`;
+
+        } else if (player === "paper" && computer !== "rock") {
+            return message = `You lose... ${computer} beats ${player}.`;
+        }
+        
+    }   
+
+    function game(num) {
+        let wins = 0;
+        let losses = 0;
+        let ties = 0;
+        for (let i = 0; i < num; i++) {
+            player = prompt("Rock, Paper, Scissors?" );
+            computer = computerPlay();
+            console.log(playGame(player,computer));
+            result = playGame(player, computer);
+            if (result.includes('win')) {
+                wins++;
+            } else if (result.includes('lose')) {
+                losses++;
+            } else {
+                ties++;
+            }
+
+            
+        
+        }
+        console.log(`Wins: ${wins} Losses: ${losses} Ties: ${ties}`);
+        if (wins > losses && wins > ties) {
+            console.log("You win!");
+        } else if (losses > wins && losses > ties) {
+            console.log("You lose...");
+        } else {
+            console.log("It's a tie.");
+        }
+
+    }
+
+    console.log(game(5));
+</script>
